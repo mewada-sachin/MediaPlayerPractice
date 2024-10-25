@@ -16,5 +16,6 @@ data class MovieDetails(
     val ratingName: String,
     val poster_url: String,
     val posterFilename: String,
-    var isSelected: Boolean = false
+    var isSelected: Boolean = false,
+    var url: String? = null
 )

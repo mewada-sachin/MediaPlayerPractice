@@ -15,7 +15,8 @@
           "duration": "02:44:00",
           "rating_name": "PG",
           "poster_url": "https://m.media-amazon.com/images/I/61sZGNr75iL._SY879_.jpg",
-          "poster_filename": "movie_2_21.jpg"
+          "poster_filename": "movie_2_21.jpg",
+          "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         },
         {
           "id": 22,
@@ -29,7 +30,8 @@
           "duration": "03:10:00",
           "rating_name": "U",
           "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/80/Dilwale_Dulhania_Le_Jayenge_poster.jpg",
-          "poster_filename": "movie_2_22.jpg"
+          "poster_filename": "movie_2_22.jpg",
+          "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
         },
         {
           "id": 23,
@@ -43,7 +45,8 @@
           "duration": "03:15:00",
           "rating_name": "U",
           "poster_url": "https://bollywoodmovieposters.com/wp-content/uploads/buy-sholay-original-movie-poster.jpg",
-          "poster_filename": "movie_2_23.jpg"
+          "poster_filename": "movie_2_23.jpg",
+          "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
         },
         {
           "id": 24,
@@ -57,7 +60,8 @@
           "duration": "03:44:00",
           "rating_name": "PG",
           "poster_url": "https://upload.wikimedia.org/wikipedia/en/b/b6/Lagaan.jpg",
-          "poster_filename": "movie_2_24.jpg"
+          "poster_filename": "movie_2_24.jpg",
+          "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
         },
         {
           "id": 25,
@@ -71,7 +75,8 @@
           "duration": "02:35:00",
           "rating_name": "U/A",
           "poster_url": "https://m.media-amazon.com/images/M/MV5BZGFmMjM5OWMtZTRiNC00ODhlLThlYTItYTcyZDMyYmMyYjFjXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg",
-          "poster_filename": "movie_2_25.jpg"
+          "poster_filename": "movie_2_25.jpg",
+          "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantDream.mp4"
         },
         {
           "id": 26,

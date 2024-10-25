@@ -1,4 +1,4 @@
-package com.example.mediaplayerpractice.ui
+package com.example.mediaplayerpractice.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

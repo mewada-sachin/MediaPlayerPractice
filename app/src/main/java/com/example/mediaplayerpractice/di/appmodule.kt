@@ -5,7 +5,7 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.mediaplayerpractice.remote.ApiService
 import com.example.mediaplayerpractice.repository.NetworkRepository
 import com.example.mediaplayerpractice.repository.NetworkRepositoryImpl
-import com.example.mediaplayerpractice.ui.MainActivityViewModel
+import com.example.mediaplayerpractice.ui.main.MainActivityViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.dsl.viewModel

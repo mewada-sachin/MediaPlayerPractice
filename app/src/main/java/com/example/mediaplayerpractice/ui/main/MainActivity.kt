@@ -1,5 +1,6 @@
-package com.example.mediaplayerpractice.ui
+package com.example.mediaplayerpractice.ui.main
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -16,6 +17,7 @@ import com.example.mediaplayerpractice.data.MovieDetails
 import com.example.mediaplayerpractice.databinding.ActivityMainBinding
 import com.example.mediaplayerpractice.recyclerview.MovieClickListener
 import com.example.mediaplayerpractice.recyclerview.MoviesCategoryAdapter
+import com.example.mediaplayerpractice.ui.mediaplayer.MediaPlayerActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), MovieClickListener {
@@ -76,6 +78,14 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
             description.visibility = View.VISIBLE
             posterImageView.visibility = View.VISIBLE
         }
+        val intent = Intent(
+            this@MainActivity,
+            MediaPlayerActivity::class.java
+        )
+        intent.putExtra("url", movieDetails.url)
+        startActivity(
+            intent
+        )
     }
 
 }
