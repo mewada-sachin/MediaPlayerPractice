@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "cid": 1,
+      "title": "New Onboarding"
+    },
+    {
+      "cid": 2,
+      "title": "Bollywood Movies"
+    },
+    {
+      "cid": 3,
+      "title": "Comedy Movies"
+    },
+    {
+      "cid": 4,
+      "title": "New Onboarding"
+    },
+    {
+      "cid": 5,
+      "title": "Bollywood Movies"
+    }
+  ]
+}
