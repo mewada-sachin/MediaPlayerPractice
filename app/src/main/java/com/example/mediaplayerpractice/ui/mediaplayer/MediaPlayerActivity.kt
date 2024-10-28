@@ -1,8 +1,14 @@
 package com.example.mediaplayerpractice.ui.mediaplayer
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
@@ -30,27 +36,37 @@ class MediaPlayerActivity : AppCompatActivity() {
     private var player: ExoPlayer? = null
     private val dataSourceFactory: DataSource.Factory = DefaultHttpDataSource.Factory()
 
+    private var isInPictureInPictureMode = false
+
+    companion object {
+        var isActivityRunning = false
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        isActivityRunning = true
         setContentView(binding.root)
         mediaUrl = intent.getStringExtra("url").toString()
+        registerReceiver(
+            pipReceiver, IntentFilter("com.example.mediaplayer.ACTION_STOP_PIP"),
+            RECEIVER_NOT_EXPORTED
+        )
         initPlayer()
     }
 
-    override fun onStop() {
-        super.onStop()
-        pause()
+    override fun onUserLeaveHint() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            enterPictureInPictureMode()
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        play()
-        hideSystemUI()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        releasePlayer()
+    override fun onPictureInPictureModeChanged(isInPipMode: Boolean) {
+        super.onPictureInPictureModeChanged(isInPipMode)
+        isInPictureInPictureMode = isInPipMode
+        if (!isInPipMode && isFinishing) {
+            releasePlayer()
+        }
     }
 
     override fun onBackPressed() {
@@ -62,10 +78,20 @@ class MediaPlayerActivity : AppCompatActivity() {
         }
     }
 
-    override fun onUserLeaveHint() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            enterPictureInPictureMode()
-        }
+    override fun onStart() {
+        super.onStart()
+        play()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        releasePlayer()
+        isActivityRunning = false
     }
 
     private fun initPlayer() {
@@ -77,7 +103,7 @@ class MediaPlayerActivity : AppCompatActivity() {
                     mediaUrl.contains("m3u8") -> getHlsMediaSource()
                     else -> getProgressiveMediaSource()
                 }
-                setMediaSource(getAssetMediaSource(assetVideoPath))
+                setMediaSource(getProgressiveMediaSource())
                 prepare()
                 addListener(playerListener)
             }
@@ -142,5 +168,16 @@ class MediaPlayerActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
                         or View.SYSTEM_UI_FLAG_IMMERSIVE
                 )
+    }
+
+    private val pipReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == "com.example.mediaplayer.ACTION_STOP_PIP") {
+                releasePlayer()
+
+                mediaUrl = intent.getStringExtra("url").toString()
+                initPlayer()
+            }
+        }
     }
 }

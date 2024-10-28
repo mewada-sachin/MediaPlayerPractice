@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mediaplayerpractice.data.MoviesCategory
+import com.example.mediaplayerpractice.data.model.MoviesCategory
 import com.example.mediaplayerpractice.databinding.MoviesCategoryItemBinding
 
 class MoviesCategoryAdapter(

@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.mediaplayerpractice.R
-import com.example.mediaplayerpractice.data.MovieDetails
+import com.example.mediaplayerpractice.data.model.MovieDetails
 import com.example.mediaplayerpractice.databinding.ActivityMainBinding
 import com.example.mediaplayerpractice.recyclerview.MovieClickListener
 import com.example.mediaplayerpractice.recyclerview.MoviesCategoryAdapter
@@ -78,14 +78,15 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
             description.visibility = View.VISIBLE
             posterImageView.visibility = View.VISIBLE
         }
-        val intent = Intent(
-            this@MainActivity,
-            MediaPlayerActivity::class.java
-        )
-        intent.putExtra("url", movieDetails.url)
-        startActivity(
-            intent
-        )
-    }
 
+        if (MediaPlayerActivity.isActivityRunning) {
+            val intent = Intent("com.example.mediaplayer.ACTION_STOP_PIP")
+            intent.putExtra("url", movieDetails.url)
+            sendBroadcast(intent)
+        }
+        val intent = Intent(this@MainActivity, MediaPlayerActivity::class.java)
+        intent.putExtra("url", movieDetails.url)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
 }

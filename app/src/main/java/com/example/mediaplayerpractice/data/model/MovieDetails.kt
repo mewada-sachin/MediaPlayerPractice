@@ -1,7 +1,4 @@
-package com.example.mediaplayerpractice.data
-
-data class CategoryList(val category: List<MoviesCategory>)
-data class MoviesCategory(val title: String, val movies_list: List<MovieDetails>)
+package com.example.mediaplayerpractice.data.model
 
 data class MovieDetails(
     val id: Int,
